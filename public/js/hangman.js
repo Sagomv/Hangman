@@ -53,10 +53,8 @@ function jugar(letra)
     estado = false;
     valida = true;
     palabra = $("#palabra").val();
-    aciertos = 0;
-    errores = 0;
-    fallos = '';
     ahorcado = $("#ahorcado").val();
+    ahorcado = ahorcado.split(',');
 
     if (letra == '') 
     {
@@ -80,9 +78,10 @@ function jugar(letra)
 
                 $("#cifrado").val(cifrado[i]);
                 
-                aciertos +=1;
                 estado = true;
 
+                aciertos = $("#aciertos").val();
+                aciertos = parseInt(aciertos) + 1;
                 $("#aciertos").val(aciertos);
             }
             else
@@ -93,7 +92,8 @@ function jugar(letra)
 
         if(estado == false)
         {
-            errores = $("#errores").val()+ 1;
+            errores = $("#errores").val();
+            errores = parseInt(errores) + 1;
             fallos = letra;
 
             $("#errores").val(errores);
@@ -157,10 +157,20 @@ function sacarResultado(valor, letra)
 
 function ahorcar()
 {
+    ahorcado = $("#ahorcado").val();
+    ahorcado = ahorcado.split(',');
+
+    turno = '';
+    turno += '<h2 style="color:red">';
+
     for (i=0; i < $("#errores").val(); i++) 
     { 
-        alert('i');
+        turno += ahorcado[i];
     }
+
+    turno += '</h2>'
+
+    $("#turnos").html(turno);
 }
 
 function letraescrita(letra)
