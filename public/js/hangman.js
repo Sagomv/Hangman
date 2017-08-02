@@ -75,9 +75,10 @@ function jugar(letra)
                 cifrado = cifrado.split(',');
 
                 cifrado[i] = letra;
-
-                $("#cifrado").val(cifrado[i]);
                 
+                $("#cifrado").val(cifrado);
+                $("#palabras").html(cifrado);
+
                 estado = true;
 
                 aciertos = $("#aciertos").val();
@@ -165,7 +166,7 @@ function ahorcar()
 
     for (i=0; i < $("#errores").val(); i++) 
     { 
-        turno += ahorcado[i];
+        turno += ahorcado[i]+' ';
     }
 
     turno += '</h2>'
