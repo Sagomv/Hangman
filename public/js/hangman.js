@@ -77,6 +77,8 @@ function jugar(letra)
                 cifrado = cifrado.split(',');
 
                 cifrado[i] = letra;
+
+                $("#cifrado").val(cifrado[i]);
                 
                 aciertos +=1;
                 estado = true;
@@ -91,12 +93,12 @@ function jugar(letra)
 
         if(estado == false)
         {
-            errores += 1;
-            fallos += letra;
+            errores = $("#errores").val()+ 1;
+            fallos = letra;
 
             $("#errores").val(errores);
-            $("#fallos").val(fallos);
-            $("#fallados").val($("#fallados").val(fallos));
+            $("#fallos").val(fallos+ $("#fallos").val());
+            $("#fallados").val($("#fallos").val());
         }
 
         if(estado == true)
@@ -168,7 +170,10 @@ function letraescrita(letra)
     letrajugada = $("#letrajugada").val();
     
     if (letrajugada.indexOf(letra))
-        $("#letrajugada").val($("#letrajugada").val(letra));
+    {
+        $("#letrajugada").val(letra+ $("#letrajugada").val());
+        $("#jugados").val($("#letrajugada").val());
+    }
     else
         estado = true;
 
