@@ -40,11 +40,12 @@
         {!!Form::hidden('letrajugada', null, array('id' => 'letrajugada')) !!}
         {!!Form::hidden('errores', 0, array('id' => 'errores')) !!}
         {!!Form::hidden('aciertos', 0, array('id' => 'aciertos')) !!}
-        {!!Form::hidden('ahorcado[]', null, array('id' => 'ahorcado')) !!}
+        {!!Form::hidden('ahorcado[]', 'AHORCADO', array('id' => 'ahorcado')) !!}
         {!!Form::hidden('posiciones', null, array('id' => 'posiciones')) !!}
 
     <?php
         echo '
+        <div id="turnos"></div>
         <hr>
         Fallos: <input id="fallados" type="text" readonly value=""> '.
         '<br>Letras jugadas: <input id="jugados" type="text" readonly value="">'.
